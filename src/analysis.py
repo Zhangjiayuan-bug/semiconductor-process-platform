@@ -224,8 +224,8 @@ def secom_classification(data: pd.DataFrame, test_size: float = 0.25) -> tuple[d
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_size, stratify=y, random_state=42)
     model = Pipeline(
         [
-            ("remove_constant", VarianceThreshold()),
             ("imputer", SimpleImputer(strategy="median", add_indicator=True)),
+            ("remove_constant", VarianceThreshold()),
             ("scale", StandardScaler()),
             ("classifier", LogisticRegression(max_iter=2500, class_weight="balanced", random_state=42)),
         ]
@@ -249,7 +249,7 @@ def secom_classification(data: pd.DataFrame, test_size: float = 0.25) -> tuple[d
 
 def _secom_models() -> dict[str, Pipeline]:
     def preprocessing() -> list[tuple[str, object]]:
-        return [("remove_constant", VarianceThreshold()), ("imputer", SimpleImputer(strategy="median", add_indicator=True))]
+        return [("imputer", SimpleImputer(strategy="median", add_indicator=True)), ("remove_constant", VarianceThreshold())]
 
     return {
         "dummy_prior": Pipeline(preprocessing() + [("classifier", DummyClassifier(strategy="prior"))]),

@@ -33,7 +33,9 @@ PR-AUC is the primary metric because failures are rare. Balanced accuracy, ROC-A
 
 ## Current result
 
-On the reproducible 5x2 comparison, random forest has the strongest mean PR-AUC, while its default 0.5 threshold predicts no failures. Logistic regression produces lower ranking performance but non-zero failure recall. This demonstrates why ranking metrics and operating thresholds must be evaluated separately.
+On the reproducible 5x2 repeated stratified comparison, random forest has the strongest mean PR-AUC (0.201), followed by logistic regression (0.154). On the five-fold temporal expanding-window comparison, random forest PR-AUC is 0.074 and logistic regression is 0.099. The reduction is a dataset-specific warning that random IID validation may overstate future-like performance; it is not evidence of external production performance.
+
+The random forest default 0.5 threshold predicts no failures in the repeated comparison, while logistic regression produces non-zero failure recall. This demonstrates why ranking metrics and operating thresholds must be evaluated separately.
 
 Results may vary with dependency versions. Run the app or `secom_validation_crosscheck` to regenerate exact values. The temporal comparison is a validation-assumption cross-check, not external or live-fab validation.
 

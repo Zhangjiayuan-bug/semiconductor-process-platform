@@ -24,7 +24,8 @@ def test_secom_classification_uses_stratified_holdout_and_balanced_metrics():
     data, _ = load_secom(SECOM)
     metrics, predictions = secom_classification(data)
     assert metrics["train_rows"] + metrics["test_rows"] == 1567
-    assert metrics["features_after_constant_filter"] < 591
+    assert metrics["features_after_constant_filter"] > 0
+    assert metrics["features_after_constant_filter"] <= 2 * 590
     assert 0 <= metrics["balanced_accuracy"] <= 1
     assert len(predictions) == metrics["test_rows"]
 
