@@ -22,8 +22,8 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
@@ -36,7 +36,7 @@ jobs:
       - name: Generate deterministic demo data
         run: python scripts_generate_demo.py
       - name: Cache UCI SECOM dataset
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: data/raw
           key: uci-secom-eea568baf3c2
@@ -46,7 +46,7 @@ jobs:
         run: pytest --cov=src --cov-branch --cov-report=term-missing --cov-report=xml
       - name: Upload coverage report
         if: matrix.python-version == '3.11'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-report
           path: coverage.xml
