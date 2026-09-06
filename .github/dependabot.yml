@@ -7,6 +7,9 @@ updates:
     groups:
       python-dependencies:
         patterns: ["*"]
+    ignore:
+      - dependency-name: numpy
+        versions: [">=2.5"]
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
