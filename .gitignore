@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+coverage.xml
+.streamlit/secrets.toml
+.env
+data/raw/
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose a measurable analysis or engineering improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user or engineering problem, not only the proposed UI.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Acceptance criteria
+      description: State observable behavior and validation evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Data and domain constraints
+      description: Note assumptions, licensing, leakage, or validation risks.
